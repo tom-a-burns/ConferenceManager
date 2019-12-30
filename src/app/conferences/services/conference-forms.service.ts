@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-//import { Conference } from '../model/conference';
+import { FormGroup,  FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Conference } from '../model/conference';
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +21,34 @@ export class ConferenceFormsService {
 
   normalize()
   {
-    let conference = new Object();
-    if ( this.conferenceForm) {
+    let conference : Conference  = new Conference();
+    if ( this.conferenceForm && this.conferenceForm.status==='VALID') {
 
+      Object.keys(this.conferenceForm.controls).forEach((key: string)=> {
+        const abstractControl = this.conferenceForm.get(key);
+        if (abstractControl instanceof FormGroup) {
+          console.log ( 'Key ' + key + 'is a nested FormGroup.  Ignoring for now');
+        } else {
+          console.log ('Key ' + key + 'is set to ' + abstractControl.value);
+          conference[key] = abstractControl.value;
+        }
+      });
+
+      if ( conference instanceof Conference) {
+        console.log ( 'Yes');
+      } else {
+        console.log ( 'Nope');
+      }
+
+      console.log ( Object.getOwnPropertyNames(conference));
+
+      //const nameCtl : FormControl = this.conferenceForm.get('conference_name');
+      //const abbrCtl = this.conferenceForm.get('conference_abbr');
+
+
+      //conference.conference_name = nameCtl.value;
+      //conference.conference_abbr = this.conferenceForm.controls['conference_abbr'].getValue();
+      //conference.conference_type = this.conferenceForm.controls['conference_type'].getValue();
     }
 
     return conference;
