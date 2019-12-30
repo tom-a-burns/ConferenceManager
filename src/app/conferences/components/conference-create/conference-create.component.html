@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="theForm" novalidate>
+      <div class="form-group">
+        <h3>Creating Conference</h3>
+        <label>Name :
+          <input type="text" formControlName="conference_name"/>
+        </label>
+      </div>
+      <div *ngIf="theForm.get('conference_name').invalid && theForm.get('conference_name').touched" class="alert alert-danger">
+        <span *ngIf="theForm.get('conference_name').errors.required">
+          A Conference Name is required.
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Abbr :
+          <input type="text" formControlName="conference_type" maxlength="3"/>
+          <span *ngIf="theForm.get('conference_abbr').invalid && theForm.get('conference_abbr').touched" class="alert alert-danger">
+            <span *ngIf="theForm.get('conference_abbr').errors.required">
+              A Conference Abbreviation is required.
+            </span>
+            <span *ngIf="theForm.get('conference_abbr').errors.minlength">
+              The Abbreviation must be 3 characters.
+            </span>
+          </span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Type :
+          <input type="text" formControlName="conference_type"/>
+        </label>
+      </div>
+      <div *ngIf="theForm.get('conference_type').invalid && theForm.get('conference_type').touched" class="alert alert-danger">
+        <span *ngIf="theForm.get('conference_type').errors.required">
+          A Conference Type is required.
+        </span>
+      </div>
+
+<!--
+      <div class="form-group">
+        Conference uses Divisions? :
+        <label>
+          <input type="radio" value=true formControlName="conference_has_divisions">
+          <span>Yes</span>
+        </label>
+        <label>
+          <input type="radio" value=false formControlName="conference_has_divisions">
+          <span>No</span>
+        </label>
+      </div>
+-->
+      <div *ngIf="theForm.valid" class="form-group">
+        <button (click)="addConference( theForm.get('conference_name').value, theForm.get('conference_abbr').value)"
+                class="btn btn-primary">Add Conference</button>
+      </div>
+    </form>
+  </div>
+</div>
