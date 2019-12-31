@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Conference from '../../model/conference';
+import { ConferenceDataService } from '../../services/conference-data.service';
+
 
 @Component({
   selector: 'app-conference-list',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConferenceListComponent implements OnInit {
 
-  constructor() { }
+  conferences: Conference[];
+
+  constructor(private cds: ConferenceDataService ) { }
 
   ngOnInit() {
+    this.cds
+      .getConferenceList()
+      .subscribe((data: Conference[]) => {
+        this.conferences = data;
+    });
   }
 
 }

@@ -27,13 +27,15 @@
       </div>
       <div class="form-group">
         <label>Type :
-          <input type="text" formControlName="conference_type"/>
+         <span>
+         <select class="custom-select" formControlName="conference_type">
+            <option value="" disabled selected>Select Conference Type</option>
+            <option value="FB">Football</option>
+            <option value="BB">Men's Basketball</option>
+            <option value="OT">Other</option>
+         </select>
+         </span>
         </label>
-        <span *ngIf="theForm.get('conference_type').invalid && theForm.get('conference_type').touched" class="alert alert-danger">
-          <span *ngIf="theForm.get('conference_type').errors.required">
-            A Conference Type is required.
-          </span>
-        </span>
       </div>
 
 <!--
