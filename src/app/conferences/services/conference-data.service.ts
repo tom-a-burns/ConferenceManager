@@ -11,13 +11,8 @@ export class ConferenceDataService {
   constructor(private http: HttpClient) { }
 
   addConference(conference) {
-    const obj = {
-      conference_name: conference.conference_name,
-	    conference_abbr: conference.conference_abbr,
-	    conference_type: conference.conference_type,
-    };
     console.log('Creating new conference...');
-    return this.http.post(`${this.uri}/add`, obj);
+    return this.http.post(`${this.uri}/add`, conference);
   }
 
   updateConference(conference_name, conference_abbr, id) {

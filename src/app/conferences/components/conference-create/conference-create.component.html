@@ -25,7 +25,7 @@
             </span>
           </span>
       </div>
-      <div class="form-group">
+      <div class="form-group form-inline">
         <label>Type :
          <span>
          <select class="custom-select" formControlName="conference_type">
@@ -38,19 +38,83 @@
         </label>
       </div>
 
-<!--
-      <div class="form-group">
-        Conference uses Divisions? :
-        <label>
-          <input type="radio" value=true formControlName="conference_has_divisions">
-          <span>Yes</span>
-        </label>
-        <label>
-          <input type="radio" value=false formControlName="conference_has_divisions">
-          <span>No</span>
-        </label>
+      <div formArrayName="conference_divisions">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let division of theForm.get('conference_divisions').controls; let i=index">
+          <fieldset>
+            <legend>
+              <h4>Division {{i+1}}:
+                <button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="removeDivision(i)">
+                  <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove This Division
+                </button>
+              </h4>
+            </legend>
+            <div [formGroupName]="i">
+              <div class="form-inline">
+                <div class="form-group">
+                  <label style="margin-right:40px;" class="col-form-label" for="division_name">Division Name :</label>
+                  <input type="text"
+                         class="form-control"
+                         id="division_name"
+                         placeholder="Name"
+                         name="type"
+                         formControlName="division_name"
+                         style="margin-right:5px;"
+                         required>
+                </div>
+                <div class="form-group">
+                  <label style="margin-right:40px;" class="col-form-label" for="division_type">Division Type :</label>
+                  <input type="text"
+                         class="form-control"
+                         id="division_type"
+                         placeholder="Type"
+                         name="type"
+                         formControlName="division_type"
+                         style="margin-right:5px;"
+                         required>
+                  <!--
+                  <button style="margin-right:5px;"  type="button" class="btn btn-success btn-sm" (click)="addNewAddressLine(city.controls.addressLines)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Address Line
+                  </button>
+                  -->
+                </div>
+
+              </div>
+              <!--
+              <div class="form-inline">
+                <div class="form-group">
+                  <div formArrayName="addressLines">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of city.get('addressLines').controls; let j=index">
+                      <div [formGroupName]="j">
+                        <div class="form-group">
+                          <label style="margin-right:5px;"  class="col-form-label" for="emailId">Address Line {{j + 1}}</label>
+                          <input formControlName="addressLine"
+                                 class="form-control"
+                                 style="margin-right:5px;"
+                                 type="email"
+                                 placeholder="Address lines"
+                                 id="address"
+                                 name="address"
+                          />
+                          <button style="margin-right:5px;" type="button" class="btn btn-danger btn-sm" (click)="deleteAddressLine(city.controls.addressLines, j)">
+                            <span class="glyphicon glyphicon-minus"aria-hidden="true">Remove Address Line</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              -->
+            </div>
+          </fieldset>
+        </div>
       </div>
--->
+      <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm" (click)="addDivision()">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Division
+      </button>
+
+
+<!--  -->
       <div class="form-group">
         <button (click)="addConference( )"
                 [disabled]="theForm.pristine || theForm.invalid"

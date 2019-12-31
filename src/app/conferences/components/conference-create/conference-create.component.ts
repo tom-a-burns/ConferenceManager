@@ -30,6 +30,14 @@ export class ConferenceCreateComponent implements OnInit {
           });
   }
 
+  addDivision() {
+    this.cfs.addDivisionFormGroup();
+  }
+
+  removeDivision( index) {
+    this.cfs.removeDivisionFormGroup(index)
+  }
+
   ngOnInit () {
     this.theForm.reset();
   }

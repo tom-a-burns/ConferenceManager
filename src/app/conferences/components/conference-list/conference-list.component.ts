@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Conference from '../../model/conference';
+import {Conference } from '../../model/conference';
 import { ConferenceDataService } from '../../services/conference-data.service';
 
 
