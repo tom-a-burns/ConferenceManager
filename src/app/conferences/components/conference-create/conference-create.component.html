@@ -1,21 +1,31 @@
 <div class="card">
   <div class="card-body">
     <form [formGroup]="theForm" novalidate>
-      <div class="form-group">
-        <h6>Creating Conference</h6>
-        <label>Name :
-          <input type="text" formControlName="conference_name"/>
-        </label>
+      <h6>Creating Conference</h6>
+      <div class="form-group form-inline">
+        <label style="margin-right:20px;" class="col-form-label">Name :</label>
+        <input type="text" formControlName="conference_name"
+               class="form-control"
+               id="conference_name"
+               placeholder="Conference Name"
+               name="type"
+               style="margin-right:5px;"
+               required>
         <span *ngIf="theForm.get('conference_name').invalid && theForm.get('conference_name').touched" class="alert alert-danger">
           <span *ngIf="theForm.get('conference_name').errors.required">
             A Conference Name is required.
           </span>
         </span>
       </div>
-      <div class="form-group">
-        <label>Abbr :
-          <input type="text" formControlName="conference_abbr" maxlength="3"/>
-        </label>
+      <div class="form-group form-inline">
+        <label style="margin-right:20px;" class="col-form-label">Abbr :</label>
+        <input type="text" formControlName="conference_abbr" maxlength="3"
+               class="form-control"
+               id="conference_abbr"
+               placeholder="Conference Abbreviation"
+               name="type"
+               style="margin-right:5px;"
+               required>
         <span *ngIf="theForm.get('conference_abbr').invalid && theForm.get('conference_abbr').touched" class="alert alert-danger">
             <span *ngIf="theForm.get('conference_abbr').errors.required">
               A Conference Abbreviation is required.
@@ -26,18 +36,15 @@
           </span>
       </div>
       <div class="form-group form-inline">
-        <label>Type :
+        <label style="margin-right:20px;" class="col-form-label">Type :</label>
          <span>
          <select class="custom-select" formControlName="conference_type">
-            <option value="" disabled selected>Select Conference Type</option>
             <option value="FB">Football</option>
             <option value="BB">Men's Basketball</option>
             <option value="OT">Other</option>
          </select>
          </span>
-        </label>
       </div>
-
       <div formArrayName="conference_divisions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let division of theForm.get('conference_divisions').controls; let i=index">
           <fieldset>
@@ -51,7 +58,7 @@
             <div [formGroupName]="i">
               <div class="form-inline">
                 <div class="form-group">
-                  <label style="margin-right:40px;" class="col-form-label" for="division_name">Division Name :</label>
+                  <label style="margin-right:20px;" class="col-form-label" for="division_name">Division Name :</label>
                   <input type="text"
                          class="form-control"
                          id="division_name"
@@ -62,7 +69,7 @@
                          required>
                 </div>
                 <div class="form-group">
-                  <label style="margin-right:40px;" class="col-form-label" for="division_type">Division Type :</label>
+                  <label style="margin-right:20px;" class="col-form-label" for="division_type">Division Type :</label>
                   <input type="text"
                          class="form-control"
                          id="division_type"
@@ -72,8 +79,8 @@
                          style="margin-right:5px;"
                          required>
                   <!--
-                  <button style="margin-right:5px;"  type="button" class="btn btn-success btn-sm" (click)="addNewAddressLine(city.controls.addressLines)">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Address Line
+                  <button style="margin-right:5px;"  type="button" class="btn btn-success btn-sm" (click)="addNewTeam(division.controls.teams)">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Team
                   </button>
                   -->
                 </div>
@@ -112,8 +119,6 @@
       <button style="margin-top:5px; margin-bottom:5px;" type="button" class="btn btn-primary btn-sm" (click)="addDivision()">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Division
       </button>
-
-
 <!--  -->
       <div class="form-group">
         <button (click)="addConference( )"

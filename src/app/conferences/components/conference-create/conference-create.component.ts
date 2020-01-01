@@ -34,7 +34,7 @@ export class ConferenceCreateComponent implements OnInit {
     this.cfs.addDivisionFormGroup();
   }
 
-  removeDivision( index) {
+  removeDivision( index : number) {
     this.cfs.removeDivisionFormGroup(index)
   }
 

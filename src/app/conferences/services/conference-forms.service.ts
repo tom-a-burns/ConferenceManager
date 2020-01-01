@@ -37,7 +37,7 @@ export class ConferenceFormsService {
 
   }
 
-  removeDivisionFormGroup (index)
+  removeDivisionFormGroup (index : number)
   {
       let control = <FormArray>this.conferenceForm.controls.conference_divisions;
       control.removeAt(index)
