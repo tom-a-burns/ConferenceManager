@@ -22,4 +22,21 @@ describe('ConferenceCreateComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+ it('ngOnInit() needs test, passing for now', () => {
+    expect(true);
+  });
+
+ it('addConference() needs test, passing for now', () => {
+    expect(true);
+  });
+
+ it('addDivision() needs test, passing for now', () => {
+    expect(true);
+  });
+
+ it('removeDivision() needs test, passing for now', () => {
+    expect(true);
+  });
 });
