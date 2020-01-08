@@ -10,19 +10,19 @@ describe('ConferenceDataService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('addConference()',() => {
+  it('addConference() still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('updateConference()',() => {
+  it('updateConference() still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('getConferenceList()',() => {
+  it('getConferenceList() still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('getConference()',() => {
+  it('getConference() still needs a test. Passing for now.',() => {
     expect(true);
   });
 });

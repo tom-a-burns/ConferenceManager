@@ -11,23 +11,23 @@ describe('ConferenceFormsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('addDivisionFormGroup',() => {
+  it('addDivisionFormGroup still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('removeDivisionFormGroup',() => {
+  it('removeDivisionFormGroup still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('normalize',() => {
+  it('normalize still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('getConferenceForm',() => {
+  it('getConferenceForm still needs a test. Passing for now.',() => {
     expect(true);
   });
 
-  it('setConferenceFormValues',() => {
+  it('setConferenceFormValues still needs a test. Passing for now.',() => {
     expect(true);
   });
 });
